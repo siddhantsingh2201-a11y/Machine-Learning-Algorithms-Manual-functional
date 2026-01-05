@@ -3,6 +3,6 @@ Writing the Linear Regression Core Code. Manual Implementation and Library imple
 
 Line Function : y = mx + c.
 MSE Error Function : 1/n * {[summation(x-x_mean) * (y - y_mean)]/summation(x-x_mean)}
- In line function : m = Sum()
-
+ In line function : m = Sum(x - x_mean)(y - y_mean)/sum(x - x_mean) ** 2
+c = y_mean - m*x_mean
 """
