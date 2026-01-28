@@ -23,11 +23,50 @@ Option B: To ask mutiple average analysts (Random Forest).
  
  # Random forest algorithm is the collection of 100+ decision trees which provide outcome 
  # based on majority voting.
-# Theoratical Foundation of random Forest:
+ # Theoratical Foundation of random Forest:
 """
-1. Bootstrap Aggregating (Bagging): Random Forest uses a technique called bagging.
+1. 
+Bootstrap Aggregating (Bagging): Random Forest uses a technique called bagging.
 
 Situation : How we assume that all decision trees are independent of each other?
 Solution : To solve this we use two types 
+
+"""
+#Random forest implementation in python.
+import pandas as pd
+import numpy as np
+import matplotlib.pyplott as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+
+# Load dataset
+data = pd.read_csv('data.csv')
+# Preprocess data
+X = data.drop('target', axis=1)
+y = data['target']
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# Create Random Forest model
+rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+# Train the model
+rf_model.fit(X_train, y_train)
+# Make predictions
+y_pred = rf_model.predict(X_test)
+# Evaluate the model
+print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
+print("Classification Report:\n", classification_report(y_test, y_pred))
+print("Accuracy Score:", accuracy_score(y_test, y_pred))
+"""
+    of randomness:
+    a. Bootstrap Sampling: Each tree is trained on a random sample of the data with replacement.
+    b. Feature Randomness: At each split in the tree, a random subset of features is considered 
+    for splitting.
+    
+2. Decision Trees: Each model in the ensemble is a decision tree, which is a simple yet powerful
+    algorithm for classification and regression tasks.
+
 
 """
